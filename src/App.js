@@ -12,6 +12,7 @@ const stripePromise = loadStripe(apiKey);
 function App() {
   return (
     <div className="App">
+    <div><img src="tshirt.jpg" alt="Tshirt"></img></div>
       <Elements stripe={stripePromise}>
         <CheckoutForm />
       </Elements>
