@@ -20,6 +20,7 @@ export default function CheckoutForm() {
     const res = await fetch('http://localhost:4000/secret')
     const {client_secret} = await res.json()
 
+// collect payment method details and submit payment details to stripe
     const result = await stripe.confirmCardPayment(client_secret, {
       payment_method: {
         card: elements.getElement(CardElement),
@@ -32,6 +33,7 @@ export default function CheckoutForm() {
     if (result.error) {
       // Show error to your customer (e.g., insufficient funds)
       console.log(result.error.message);
+      //if i want to log it: 
     } else {
       // The payment has been processed!
       if (result.paymentIntent.status === 'succeeded') {
@@ -41,14 +43,15 @@ export default function CheckoutForm() {
         // payment_intent.succeeded event that handles any business critical
         // post-payment actions.
         window.alert('Payment was successful!')
+        // show a success page
       }
     }
   };
-
+  
   return (
     <form onSubmit={handleSubmit}>
       <CardSection />
-      <button disabled={!stripe}>Confirm order</button>
+      <button className="Button" disabled={!stripe}>Buy T-Shirt</button>
     </form>
   );
 }

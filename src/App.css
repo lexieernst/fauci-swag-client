@@ -1,5 +1,23 @@
 .App {
   text-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 40%;
+}
+
+.Button {
+  text-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 3%;
+}
+
+.fauci {
+    /*content: url("https://imgur.com/a/Vx51DqS");
+    width: auto;
+    height: 50px;
+    margin-top: 35px;
+    margin-bottom: 65px;*/
 }
 
 .App-logo {
