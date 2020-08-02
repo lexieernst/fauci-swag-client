@@ -17,8 +17,10 @@ export default function CheckoutForm() {
       // Make sure to disable form submission until Stripe.js has loaded.
       return;
     }
+    const res = await fetch('http://localhost:4000/secret')
+    const {client_secret} = await res.json()
 
-    const result = await stripe.confirmCardPayment('sk_test_51HB9t8Hs8cvrYh7rbaRdU8VmooWA9dDsQiJEcTRjCwFX0sFGAcSS9zGJXQTyzWgIjuzg3LIcGmGS8kZeBLs2aI2I006cWZUk9f', {
+    const result = await stripe.confirmCardPayment(client_secret, {
       payment_method: {
         card: elements.getElement(CardElement),
         billing_details: {
