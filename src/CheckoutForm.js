@@ -24,16 +24,12 @@ export default function CheckoutForm() {
     const result = await stripe.confirmCardPayment(client_secret, {
       payment_method: {
         card: elements.getElement(CardElement),
-        billing_details: {
-          name: 'Anthony Fauci',
-        },
       }
     });
 
     if (result.error) {
       // Show error to your customer (e.g., insufficient funds)
-      console.log(result.error.message);
-      //if i want to log it: 
+      window.alert('Sorry, there are insufficient funds on this card. Please try again.') 
     } else {
       // The payment has been processed!
       if (result.paymentIntent.status === 'succeeded') {

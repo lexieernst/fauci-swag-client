@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
+import tshirt from './t-shirt.png';
 import './App.css';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
@@ -12,7 +13,9 @@ const stripePromise = loadStripe(apiKey);
 function App() {
   return (
     <div className="App">
-    <div><img src="tshirt.jpg" alt="Tshirt"></img></div>
+       <span className="Fauci">
+         <img src={tshirt} className="Fauci"></img>
+       </span>
       <Elements stripe={stripePromise}>
         <CheckoutForm />
       </Elements>
